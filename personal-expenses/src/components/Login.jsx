@@ -4,14 +4,14 @@ import "../style/registerform.css"
 import Button from './shared/Button'
 import axios from 'axios'
 import {useState} from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Form from './Form'
 
 function Login() {
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -22,14 +22,14 @@ function Login() {
             password: password
         })
         localStorage.setItem("token", resp.data.token)
-        
-        const tokenUrl = "http://localhost:5000/expenseBuddy/users/me"
-        const respToken = await axios.get(tokenUrl, {
-            headers:{
-            "authorization" : `Bearer ${localStorage.getItem("token")}`
-            }
-        })
-        console.log(respToken)
+
+        // const tokenUrl = "http://localhost:5000/expenseBuddy/users/me"
+        // const respToken = await axios.get(tokenUrl, {
+        //     headers:{
+        //     "authorization" : `Bearer ${localStorage.getItem("token")}`
+        //     }
+        // })
+        navigate("/")
         } catch (error) {
         
         }
@@ -38,7 +38,7 @@ function Login() {
   }
   return (
     <div className='form d-flex justify-content-center align-item-center'>
-      <div className='form-heading p-4'>Register</div>
+      <div className='form-heading p-4'>Login</div>
       <Card>
         <form className='register-form'>
           <div className='d-flex justify-content-center'>
@@ -55,7 +55,7 @@ function Login() {
               />
 
               <div className='d-flex justify-content-between'>
-                <Link to={<Form/>}>
+                <Link to="/Form">
                     <Button btnType="button" btnColorStyle="texted" btnSize="small" >Register</Button>
                 </Link>
                 <input className="primary small" type="submit" value="Login"  onClick={(e) => handleSubmit(e)}/>

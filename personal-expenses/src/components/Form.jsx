@@ -5,6 +5,7 @@ import userContext from '../context/userContext'
 import "../style/registerform.css"
 import Button from './shared/Button'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Form() {
   const { nameRef, handleUserName } = useContext(userContext);
@@ -59,7 +60,9 @@ function Form() {
               />
 
               <div className='d-flex justify-content-between'>
-                <Button btnType="button" btnColorStyle="texted" btnSize="small" >Login</Button>
+                <Link to="/Login">
+                  <Button btnType="button" btnColorStyle="texted" btnSize="small" >Login</Button>
+                </Link>
 
                 <input className="primary small" type="submit" value="Submit"  onClick={(e) => handleSubmit(e)}/>
               </div>

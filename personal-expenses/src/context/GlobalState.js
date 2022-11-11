@@ -19,7 +19,11 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions() {
     try {
-      const res = await axios.get('http://localhost:5000/api/v1/transactions');
+      const res = await axios.get('http://localhost:5000/api/v1/transactions',{
+        headers:{
+          "authorization" : `Bearer ${localStorage.getItem("token")}`
+        }
+      });
 
       dispatch({
         type: 'GET_TRANSACTIONS',
@@ -35,7 +39,11 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/transactions/${id}`);
+      await axios.delete(`http://localhost:5000/api/v1/transactions/${id}`,{
+        headers:{
+          "authorization" : `Bearer ${localStorage.getItem("token")}`
+        }
+      });
 
       dispatch({
         type: 'DELETE_TRANSACTION',
@@ -52,7 +60,8 @@ export const GlobalProvider = ({ children }) => {
   async function addTransaction(transaction) {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "authorization" : `Bearer ${localStorage.getItem("token")}`
       }
     }
 

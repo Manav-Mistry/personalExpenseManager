@@ -19,10 +19,10 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-/* .container {
+.container {
   margin: 30px auto;
   width: 350px;
-} */
+}
 
 h1 {
   letter-spacing: 1px;
@@ -78,7 +78,9 @@ label {
 }
 
 input[type='text'],
-input[type='number'] {
+input[type='number'],
+input[type='password'],
+input[type='email']{
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;

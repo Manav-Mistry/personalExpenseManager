@@ -24,8 +24,8 @@ function Introduction() {
           <p className="slogan-secondary">
             Then Projectname is here for the solution
           </p>
-          <Link to="./form">
-            <Button btnType="button" btnColorStyle="primary" btnSize="large"> Sign Up</Button>
+          <Link to="./transaction">
+            <Button btnType="button" btnColorStyle="primary" btnSize="large">Get Started</Button>
           </Link>
         </div>
 

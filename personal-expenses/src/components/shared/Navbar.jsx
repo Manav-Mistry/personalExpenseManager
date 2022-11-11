@@ -1,8 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate()
+ 
   return (
+   
     <>
       <div id="navbar">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,32 +36,36 @@ function Navbar() {
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to="/Features"
-                    activeclassname="active"
-                  >
-                    Features
-                  </NavLink>
-                </li>
+                
                 <li className="nav-item">
                   <NavLink className="nav-link" 
                     to="/form" 
                     activeclassname="active">
-                    Form
+                    Register
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link disabled"
-                    to="/"
-                    activeclassname="active"
-                    tabIndex="-1"
-                    aria-disabled="true"
-                  >
-                    Disabled
-                  </NavLink>
+                  {
+                    (localStorage.getItem("token") == undefined) ?
+
+                    (<NavLink className="nav-link" 
+                      to="/Login" 
+                      activeclassname="active">
+                      Login
+                    </NavLink>
+                    )
+                    :
+                  
+                    ( 
+                    <div className="nav-link" onClick={() => {
+                      localStorage.removeItem("token")
+                      navigate("/")
+                    }
+                    }>Logout</div>
+                    )
+                  
+                  }
+
                 </li>
               </ul>
             </div>
