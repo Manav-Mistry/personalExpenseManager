@@ -1,0 +1,15 @@
+input[type='text'], input[type='email'],input[type='password'] {
+    margin-bottom:1rem !important;
+    border-radius: 5px;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-heading{
+    background-color: seagreen;
+}
